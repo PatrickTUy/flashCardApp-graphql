@@ -25,7 +25,7 @@ export const AuthMutation = extendType({
               email: nonNull(stringArg()),
               password: nonNull(stringArg()),
           },
-          async resolve(parent, args, context) {
+          async resolve(parent:any, args:any, context:any) {
            
               const user = await context.prisma.user.findUnique({
                   where: { email: args.email },
@@ -61,7 +61,7 @@ export const AuthMutation = extendType({
               password: nonNull(stringArg()),
               name: nonNull(stringArg()),
           },
-          async resolve(parent, args, context) {
+          async resolve(parent:any, args:any, context:any) {
               const { email, name } = args;
 
               const password = await bcrypt.hash(args.password, 10);

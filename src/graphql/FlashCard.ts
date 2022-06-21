@@ -28,7 +28,7 @@ export const FlashCard = objectType({
         t.nonNull.dateTime("createdAt"); 
         t.field("addedBy", {   
           type: "User",
-          resolve(parent, args, context) {  
+          resolve(parent:any, args:any, context:any) {  
               return context.prisma.flashCard
                   .findUnique({ where: { id: parent.id } })
                   .addedBy();
@@ -46,7 +46,7 @@ export const FlashCardMutation = extendType({
       args: {
         id:nonNull(intArg()),
       },
-       async resolve(parent, args, context) {
+       async resolve(parent:any, args:any, context:any) {
         const { userId } = context;
 
         if (!userId) {  
@@ -78,7 +78,7 @@ export const FlashCardMutation = extendType({
         url:nullable(stringArg()),
         isDone:nullable(stringArg())
       },
-      async resolve(parent, args, context) {
+      async resolve(parent:any, args:any, context:any) {
         const { description, url,isDone } = args;
         const { userId } = context;
 
@@ -119,7 +119,7 @@ export const FlashCardMutation = extendType({
         description: nonNull (stringArg()),
         url:nonNull(stringArg()),
       },
-      resolve(parent, args, context) {
+      resolve(parent:any, args:any, context:any) {
         const { description, url } = args;
         const { userId } = context;
 
@@ -152,7 +152,7 @@ export const FlashCardQuery = extendType({
      args:{
        id:nonNull (intArg()),
      },
-     resolve(parent, args, context) {
+     resolve(parent:any, args:any, context:any) {
        return context.prisma.flashCard.findUnique({
          where:{id:args.id}
        })
@@ -165,7 +165,7 @@ export const FlashCardQuery = extendType({
         args:{
           orderBy: arg({ type: list(nonNull(LinkOrderByInput)) }),
         },
-        resolve(parent, args, context) {  
+        resolve(parent:any, args:any, context:any) {  
             return context.prisma.flashCard.findMany({
               orderBy: args?.orderBy as Prisma.Enumerable<Prisma.FlashCardOrderByWithRelationInput> | undefined, 
             });  
