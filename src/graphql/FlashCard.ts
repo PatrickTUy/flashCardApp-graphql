@@ -171,5 +171,18 @@ export const FlashCardQuery = extendType({
             });  
         },
     });
+
+
+    t.nonNull.list.nonNull.field("myFeed", {
+      type: "FlashCard",
+      resolve(parent:any, args:any, context:any) {  
+        const { userId } = context;
+          return context.prisma.flashCard.findMany({
+            where:{addedById:userId},
+          });  
+      },
+  });
+
+    
 },
 });

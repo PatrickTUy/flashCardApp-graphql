@@ -103,6 +103,7 @@ export interface NexusGenFieldTypes {
   Query: { // field return type
     feed: NexusGenRootTypes['FlashCard'][]; // [FlashCard!]!
     getFlashCard: NexusGenRootTypes['FlashCard'] | null; // FlashCard
+    myFeed: NexusGenRootTypes['FlashCard'][]; // [FlashCard!]!
   }
   User: { // field return type
     email: string; // String!
@@ -135,6 +136,7 @@ export interface NexusGenFieldTypeNames {
   Query: { // field return type name
     feed: 'FlashCard'
     getFlashCard: 'FlashCard'
+    myFeed: 'FlashCard'
   }
   User: { // field return type name
     email: 'String'

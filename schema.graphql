@@ -38,6 +38,7 @@ type Mutation {
 type Query {
   feed(orderBy: [LinkOrderByInput!]): [FlashCard!]!
   getFlashCard(id: Int!): FlashCard
+  myFeed: [FlashCard!]!
 }
 
 enum Sort {
