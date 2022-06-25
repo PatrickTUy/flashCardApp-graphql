@@ -166,9 +166,7 @@ export const FlashCardQuery = extendType({
           orderBy: arg({ type: list(nonNull(LinkOrderByInput)) }),
         },
         resolve(parent:any, args:any, context:any) {  
-          const { userId } = context;
-            return context.prisma.flashCard.findMany(
-              {where:{addedById:!userId},
+            return context.prisma.flashCard.findMany({
               orderBy: args?.orderBy as Prisma.Enumerable<Prisma.FlashCardOrderByWithRelationInput> | undefined, 
             });  
         },
