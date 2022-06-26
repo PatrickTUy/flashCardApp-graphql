@@ -96,7 +96,7 @@ export const FlashCardMutation = extendType({
         }
         
         const editedFlashCard = context.prisma.flashCard.update({
-          where:{id: userId},
+          where:{id: args.id},
             data: {
                 ...( description && {description}),
                 ...( url&& { url } ),
